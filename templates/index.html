@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Ray{% endblock %}
+
+{% block headmessage %}嗨! 歡迎來到{{ name }}的網站<br><h2>Hello! Welcome to my Website~</h2>{% endblock %}
+
+{% block main %}
+        <h3>本期樂透明牌：<br><br>
+            一般號 Numbers　 {{ lottery }}<br>
+            特別號 Mega Ball　{{ special }}<br>
+            {% autoescape off %}
+            {{ plot_div }}
+            {% endautoescape %}
+            😷記得戴口罩😷<br>
+            Plz wear a mask<br><br>
+        </h3>
+{% endblock %}
