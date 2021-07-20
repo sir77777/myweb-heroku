@@ -23,3 +23,12 @@ class City(models.Model):
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
     def __str__(self):
         return self.name
+
+class Note(models.Model):
+    title = models.CharField(max_length=200)
+    pub_date = models.DateTimeField(default=timezone.now)
+    class Meta:
+        ordering = ('-pub_date',)
+    def __str__(self):
+        return self.title
+

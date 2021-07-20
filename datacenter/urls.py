@@ -25,5 +25,8 @@ urlpatterns = [
     path('rank/',views.rank),
     path('chart/',views.chart),
     path('logout/',views.mylogout),
-    path('delete/<int:id>/',views.delete),
+    path('delete_news/<int:id>/',views.delete_news),
+    path('note/',views.note),
+    path('add_note/', views.add_note),
+    path('delete_note/<int:id>/',views.delete_note),
 ]

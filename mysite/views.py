@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 import random
-from mysite.models import Post, Country, City
+from mysite.models import Note, Post, Country, City
 from plotly.offline import plot
 import plotly.graph_objs as go
 import numpy as np
@@ -35,6 +35,15 @@ def show(request, id):
     except:
         return redirect("/news/")
     return render(request, "show.html", locals())
+
+
+def delete_news(request, id):
+    try:
+        post = Post.objects.get(id=id)
+        post.delete()
+    except:
+        return redirect("/news/")
+    return redirect("/news/")
 
 
 @login_required(login_url="/admin/login/")
@@ -78,11 +87,24 @@ def mylogout(request):
     return redirect("/")
 
 
-def delete(request, id):
-    try:
-        post = Post.objects.get(id=id)
-        post.delete()
-    except:
-        return redirect("/news/")
-    return redirect("/news/")
+def note(request):
+    notes = Note.objects.all()
+    return render(request, "note.html", locals())
+    
 
+def add_note(request):
+    if request.method == 'POST':
+        title = request.POST['title']
+        if len(title)>2:
+            note = Note(title=title)
+            note.save()
+    return redirect("/note/")
+
+
+def delete_note(request, id):
+    try:
+        note = Note.objects.get(id=id)
+        note.delete()
+    except:
+        return redirect("/note/")
+    return redirect("/note/")

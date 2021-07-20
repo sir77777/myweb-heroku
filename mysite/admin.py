@@ -1,5 +1,5 @@
 from django.contrib import admin
-from mysite.models import Post, Country, City
+from mysite.models import Post, Country, City, Note
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'pub_date')
@@ -12,3 +12,7 @@ admin.site.register(Country, CountryAdmin)
 class CityAdmin(admin.ModelAdmin):
     list_display = ('name', 'country', 'population')
 admin.site.register(City, CityAdmin)
+
+class NoteAdmin(admin.ModelAdmin):
+    list_display = ('title', 'pub_date')
+admin.site.register(Note, NoteAdmin)

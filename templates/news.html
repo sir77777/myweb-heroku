@@ -24,7 +24,7 @@
         </td>  
         <td>{{ post.pub_date }}</td>
         {% if request.user.is_superuser %}
-        <td><a class='btn btn-warning' href="/delete/{{ post.id }}/">刪除</a></td>
+        <td><a class='btn btn-warning' href="/delete_news/{{ post.id }}/">刪除</a></td>
         {% endif %}
     </tr>
     {% endfor %}
